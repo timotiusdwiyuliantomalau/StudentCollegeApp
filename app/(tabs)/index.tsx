@@ -29,7 +29,7 @@ function HomeScreen() {
           {/* UNNES */}
           <View className="flex-row items-center justify-between w-full mb-6 mt-2">
             <View className="flex-row items-center space-x-2">
-              <Image className="w-10 h-12" source={logoUnnes}></Image>
+              <Image className="w-10 h-12" source={logoUnnes} accessibilityLabel="Foto Mahasiswa"></Image>
               <View className="flex-col">
                 <Text className=" text-2xl font-bold">UNICE</Text>
                 <Text className="text-xs font-medium">

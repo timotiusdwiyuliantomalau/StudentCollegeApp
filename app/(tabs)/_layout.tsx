@@ -54,7 +54,6 @@ export default function TabLayout() {
           name="profil"
           options={{
             title: "Profil",
-            headerShown: true,
             tabBarIcon: ({ color, focused }) => (
               <TabBarIcon
                 name={focused ? "user" : "user"}

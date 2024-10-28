@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Switch, Text, TextInput, View } from "react-native";
 
 function notifikasi() {
   return <>
@@ -19,7 +19,12 @@ function notifikasi() {
     <View className="bg-yellow-400 w-5 h-5"></View>
   </View>
   </View> */}
+<View className="mt-12">
+  {/* <Text className="text-2xl">Halooo</Text> */}
+<TextInput multiline textAlignVertical="top" className="w-32 h-32 bg-red-200"/>
+<Switch ></Switch>
+</View>
+
   </>;
 }
-
 export default notifikasi;

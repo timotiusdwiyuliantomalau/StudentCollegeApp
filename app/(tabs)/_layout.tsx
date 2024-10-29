@@ -7,7 +7,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
+  
   return (
     <>
       <Tabs
@@ -16,7 +16,19 @@ export default function TabLayout() {
           tabBarInactiveTintColor: Colors.dark.tint,
           headerShown: false,
         }}
-      >
+        >
+          <Tabs.Screen
+            name="notifikasi"
+            options={{
+              title: "Notifikasi",
+              tabBarIcon: ({ color, focused }) => (
+                <TabBarIcon
+                  name={focused ? "bell" : "bell"}
+                  color={color}
+                />
+              ),
+            }}
+          />
         <Tabs.Screen
           name="index"
           options={{
@@ -38,7 +50,7 @@ export default function TabLayout() {
             ),
           }}
         />
-        <Tabs.Screen
+        {/* <Tabs.Screen
           name="notifikasi"
           options={{
             title: "Notifikasi",
@@ -49,7 +61,7 @@ export default function TabLayout() {
               />
             ),
           }}
-        />
+        /> */}
         <Tabs.Screen
           name="profil"
           options={{

@@ -1,11 +1,17 @@
+import { StackNavigationState, useNavigation } from "@react-navigation/native";
+import { Link } from "expo-router";
 import React from "react";
-import { Button, FlatList, SafeAreaView } from "react-native";
+import { StatusBar } from "react-native";
+import { Button, FlatList, Platform, SafeAreaView } from "react-native";
 import { Switch, Text, TextInput, View } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Drawer } from "expo-router/drawer";
 
 function notifikasi() {
   const [items, setItems] = React.useState<any>([]);
-  const [dataInput, setDataInput] = React.useState({body:'',title:''});
-  const [isPosting,setIsPosting]=React.useState(false);
+  const [dataInput, setDataInput] = React.useState({ body: "", title: "" });
+  const [isPosting, setIsPosting] = React.useState(false);
+  // const navigation=useNavigation<any>();
   async function fetchData() {
     const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
       headers: {
@@ -21,23 +27,25 @@ function notifikasi() {
 
   async function handleSubmitPost() {
     setIsPosting(true);
-    const res=await fetch('https://jsonplaceholder.typicode.com/posts',{
-      method:'POST',
-      body:JSON.stringify({
-        body:dataInput.body,
-        title:dataInput.title,
-        id:items.length+1
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      body: JSON.stringify({
+        body: dataInput.body,
+        title: dataInput.title,
+        id: items.length + 1,
       }),
     });
-    const result=await res.json();
+    const result = await res.json();
     console.log(dataInput);
     setIsPosting(false);
-    setItems([...items,dataInput]);
+    setItems([...items, dataInput]);
   }
 
   return (
     <>
-      <SafeAreaView className="flex-1 mt-12 bg-red-500 p-5 flex-col space-y-8"> 
+      
+      {/* <SafeAreaView className="flex-1 pt-10 bg-red-500 px-4 flex-col space-y-8"> 
+        <Link href={{pathname:'/profil',params:{name:'Timotius Dwi Malau'}}}>GO TO PROFIL</Link>
         <View className="flex-col space-y-2">
           <TextInput
             maxLength={100}
@@ -70,23 +78,7 @@ function notifikasi() {
             <Text className="bg-yellow-400">{item.body}</Text>
           )}
         ></FlatList>
-      </SafeAreaView>
-      {/* <View className="flex-col justify-center items-center bg-green-400 space-y-4 mt-12 p-4">
-  <View className="flex-col space-y-4 space-y-4 bg-red-500 p-5 w-full">
-    <View className="bg-yellow-400 w-5 h-5 flex-row space-x-2">
-    <View className="bg-black rounded-full w-5 h-5"></View>
-    <Text>Halooo</Text>
-    </View>
-    <View className="bg-yellow-400 w-5 h-5"></View>
-  </View>
-  <View className="flex-col space-y-4 space-y-4 bg-red-500 p-5">
-    <View className="bg-yellow-400 w-5 h-5 flex-row space-x-2">
-    <View className="bg-black rounded-full w-5 h-5"></View>
-    <Text>Halooo</Text>
-    </View>
-    <View className="bg-yellow-400 w-5 h-5"></View>
-  </View>
-  </View> */}
+      </SafeAreaView> */}
     </>
   );
 }

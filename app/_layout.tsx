@@ -1,6 +1,7 @@
 import {
   DarkTheme,
   DefaultTheme,
+  NavigationContainer,
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
@@ -10,6 +11,8 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import Drawer from "expo-router/drawer";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -31,11 +34,22 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Drawer>
+        <Drawer.Screen
+          name="index" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: "Home",
+            title: "Home",
+          }}
+        />
+      </Drawer>
+    </GestureHandlerRootView>
+    //   <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+    //   <Stack>
+    //     <Stack.Screen name="(tabs)"  options={{ headerShown: false }} />
+    //     <Stack.Screen name="+not-found" />
+    //   </Stack>
+    // </ThemeProvider>
   );
 }

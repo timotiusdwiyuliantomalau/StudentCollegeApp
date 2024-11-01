@@ -14,10 +14,10 @@ function HomeScreen() {
   const logoUnnes = require("../../assets/images/logo_unnes.png");
   return (
     <>
-      <ScrollView className="flex-col bg-gray-100 mt-12">
-        <View className="px-3 pb-6 flex-col items-center relative">
+      <ScrollView className="flex-col bg-gray-100">
+        <View className={`px-3 pb-6 pt-[${StatusBar.currentHeight&&Math.ceil(StatusBar.currentHeight)}px] flex-col items-center relative`}>
           {/* SVG */}
-          <View className="absolute -bottom-2 left-0 w-[400] h-[100]">
+          <View className="absolute -bottom-2 left-0 w-screen h-[100]">
             <Svg viewBox="0 0 1440 320">
               <Path
                 fill="#FFD700"
@@ -27,11 +27,11 @@ function HomeScreen() {
             </Svg>
           </View>
           {/* UNNES */}
-          <View className="flex-row items-center justify-between w-full mb-6 mt-2">
-            <View className="flex-row items-center space-x-2">
-              <Image className="w-10 h-12" source={logoUnnes} accessibilityLabel="Foto Mahasiswa"></Image>
-              <View className="flex-col">
-                <Text className=" text-2xl font-bold">UNICE</Text>
+          <View className="flex-row items-center justify-between w-full mb-6">
+            <View className="flex-row space-x-2">
+              <Image className="w-10 h-12" source={logoUnnes}></Image>
+              <View className="flex-col justify-between">
+                <Text className=" text-xl font-bold">UNICE</Text>
                 <Text className="text-xs font-medium">
                   UNIVERSITAS NEGERI SEMARANG
                 </Text>
@@ -44,6 +44,7 @@ function HomeScreen() {
           <View className="flex space-x-2 flex-row w-full overflow-hidden items-center">
             <Image
               source={{ uri: "https://picsum.photos/300/300" }}
+              accessibilityLabel="Foto Mahasiswa"
               className="h-[55] w-[55] bg-black rounded-full"
             />
             <View className="flex-col flex-wrap w-full">

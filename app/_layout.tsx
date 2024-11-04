@@ -34,22 +34,23 @@ export default function RootLayout() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Drawer>
-        <Drawer.Screen
-          name="index" // This is the name of the page and must match the url from root
-          options={{
-            drawerLabel: "Home",
-            title: "Home",
-          }}
-        />
-      </Drawer>
-    </GestureHandlerRootView>
-    //   <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-    //   <Stack>
-    //     <Stack.Screen name="(tabs)"  options={{ headerShown: false }} />
-    //     <Stack.Screen name="+not-found" />
-    //   </Stack>
-    // </ThemeProvider>
+    // <GestureHandlerRootView style={{ flex: 1 }}>
+    //   <Drawer>
+    //     <Drawer.Screen
+    //       name="index" // This is the name of the page and must match the url from root
+    //       options={{
+    //         drawerLabel: "Home",
+    //         title: "Home",
+    //       }}
+    //     />
+    //   </Drawer>
+    // </GestureHandlerRootView>
+    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(other-views)" options={{ headerShown: false }}></Stack.Screen>
+        <Stack.Screen name="+not-found" />
+      </Stack>
+    </ThemeProvider>
   );
 }

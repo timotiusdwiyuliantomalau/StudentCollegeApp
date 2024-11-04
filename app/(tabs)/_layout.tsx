@@ -4,8 +4,6 @@ import React from "react";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { NavigationContainer } from "@react-navigation/native";
-import { Button } from "react-native";
 import Drawer from "expo-router/drawer";
 
 export default function TabLayout() {
@@ -13,7 +11,7 @@ export default function TabLayout() {
   
   return (
     <>
-     <Drawer>
+     {/* <Drawer>
         <Drawer.Screen
           name="index" // This is the name of the page and must match the url from root
           options={{
@@ -21,28 +19,15 @@ export default function TabLayout() {
             title: "Home",
           }}
         />
-      </Drawer>
-      {/* <Tabs
+      </Drawer> */}
+      <Tabs
         screenOptions={{
           tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
           tabBarInactiveTintColor: Colors.dark.tint,
           headerShown: false,
         }}
         >
-          <Tabs.Screen
-            name="notifikasi"
-            options={{
-              title: "Notifikasi",
-              headerRight:()=>(<Link className="mr-3 font-bold text-lg text-green-600" href={{pathname:'/'}}>Info</Link>),
-              headerShown: true,
-              tabBarIcon: ({ color, focused }) => (
-                <TabBarIcon
-                  name={focused ? "bell" : "bell"}
-                  color={color}
-                />
-              ),
-            }}
-          />
+          
         <Tabs.Screen
           name="index"
           options={{
@@ -65,17 +50,19 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="notifikasi"
-          options={{
-            title: "Notifikasi",
-            tabBarIcon: ({ color, focused }) => (
-              <TabBarIcon
-                name={focused ? "bell" : "bell"}
-                color={color}
-              />
-            ),
-          }}
-        />
+            name="notifikasi"
+            options={{
+              title: "Notifikasi",
+              headerRight:()=>(<Link className="mr-3 font-bold text-lg text-green-600" href={{pathname:'/'}}>Info</Link>),
+              headerShown: true,
+              tabBarIcon: ({ color, focused }) => (
+                <TabBarIcon
+                  name={focused ? "bell" : "bell"}
+                  color={color}
+                />
+              ),
+            }}
+          />
         <Tabs.Screen
           name="profil"
           initialParams={{ name: "Kosong" }}
@@ -89,7 +76,7 @@ export default function TabLayout() {
             ),
           }}
         />
-      </Tabs> */}
+      </Tabs>
     </>
   );
 }

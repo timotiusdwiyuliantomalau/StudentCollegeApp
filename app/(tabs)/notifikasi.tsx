@@ -21,6 +21,9 @@ function notifikasi() {
     const result = await res.json();
     setItems(result);
   }
+
+  
+
   React.useEffect(() => {
     fetchData();
   }, []);
@@ -35,31 +38,40 @@ function notifikasi() {
         id: items.length + 1,
       }),
     });
-    const result = await res.json();
-    console.log(dataInput);
     setIsPosting(false);
     setItems([...items, dataInput]);
   }
 
   return (
     <>
-      
-      {/* <SafeAreaView className="flex-1 pt-10 bg-red-500 px-4 flex-col space-y-8"> 
-        <Link href={{pathname:'/profil',params:{name:'Timotius Dwi Malau'}}}>GO TO PROFIL</Link>
+      <SafeAreaView className="flex-1 pt-10 bg-red-500 px-4 flex-col space-y-8">
+        <Link
+          href={{ pathname: "/profil", params: { name: "Timotius Dwi Malau" } }}
+        >
+          GO TO PROFIL
+        </Link>
         <View className="flex-col space-y-2">
           <TextInput
             maxLength={100}
-            onChangeText={(text: string) => setDataInput({...dataInput,title:text})}
+            onChangeText={(text: string) =>
+              setDataInput({ ...dataInput, title: text })
+            }
             multiline
             className="bg-slate-300"
           ></TextInput>
           <TextInput
             maxLength={100}
-            onChangeText={(text: string) => setDataInput({...dataInput,body:text})}
+            onChangeText={(text: string) =>
+              setDataInput({ ...dataInput, body: text })
+            }
             multiline
             className="bg-slate-300"
           ></TextInput>
-          <Button title={isPosting?'Posting...':'Submit'} disabled={isPosting} onPress={handleSubmitPost}></Button>
+          <Button
+            title={isPosting ? "Posting..." : "Submit"}
+            disabled={isPosting}
+            onPress={handleSubmitPost}
+          ></Button>
         </View>
         <FlatList
           data={items.reverse()}
@@ -78,7 +90,7 @@ function notifikasi() {
             <Text className="bg-yellow-400">{item.body}</Text>
           )}
         ></FlatList>
-      </SafeAreaView> */}
+      </SafeAreaView>
     </>
   );
 }

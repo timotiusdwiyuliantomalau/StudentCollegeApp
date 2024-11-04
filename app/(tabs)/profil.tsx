@@ -9,7 +9,7 @@ function profil() {
     <>
       <ScrollView className="flex flex-col h-full">
         {/* Header */}
-        <View className={`bg-yellow-400 text-white text-center pt-[${StatusBar.currentHeight&&Math.ceil(StatusBar.currentHeight)}px] pb-4`}>
+        <View className={`bg-yellow-400 text-white text-center pb-4`} style={{paddingTop: StatusBar.currentHeight}}>
           <Text className="text-lg pl-4 font-semibold">Profil</Text>
         </View>
 

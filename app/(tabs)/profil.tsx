@@ -1,15 +1,24 @@
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import React from "react";
-import { View, Text, TouchableOpacity, ScrollView, StatusBar } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  StatusBar,
+} from "react-native";
 import { useLocalSearchParams } from "expo-router";
 
 function profil() {
-  const name=useLocalSearchParams().name;
+  const name = useLocalSearchParams().name;
   return (
     <>
       <ScrollView className="flex flex-col h-full">
         {/* Header */}
-        <View className={`bg-yellow-400 text-white text-center pb-4`} style={{paddingTop: StatusBar.currentHeight}}>
+        <View
+          className={`bg-yellow-300 text-white text-center pb-4`}
+          style={{ paddingTop: StatusBar.currentHeight }}
+        >
           <Text className="text-lg pl-4 font-semibold">Profil</Text>
         </View>
 
@@ -25,7 +34,7 @@ function profil() {
                 timotiusdwimalau@students.unnes.ac.id
               </Text>
               <View className="flex items-center mt-2">
-                <View className="bg-yellow-500 text-black rounded-full px-2 py-1 text-sm font-semibold">
+                <View className="bg-yellow-400 text-black rounded-full px-2 py-1 text-sm font-semibold">
                   <Text>Mahasiswa</Text>
                 </View>
               </View>

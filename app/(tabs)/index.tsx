@@ -10,24 +10,17 @@ import {
 } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import Icon from "react-native-vector-icons/FontAwesome";
-import {collection, getDocs, getFirestore} from "firebase/firestore";
-import app from "@/config/firebase/initialize";
 
 function HomeScreen() {
   const logoUnnes = require("../../assets/images/logo_unnes.png");
-  const firestore=getFirestore(app);
-  React.useEffect(()=>{
-getData();
-  },[]);
-
-  async function getData() {
-    const snapshot = await getDocs(collection(firestore, "college_app"));
-    const result = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    console.log(result);
-  }
+  const [arrayImg, setArrayImg] = React.useState<any>([]);
+  React.useEffect(() => {
+    let arr: any = [];
+    for (let i = 1; i <= 6; i++) {
+      arr.push(`https://picsum.photos/300/${300 + i}`);
+    }
+    setArrayImg(arr);
+  }, []);
   return (
     <>
       <ScrollView className="flex-col bg-gray-100">
@@ -40,7 +33,7 @@ getData();
             <Svg viewBox="0 0 1440 320">
               <Path
                 fill="#FFD700"
-                fillOpacity="1"
+                fillOpacity="0.7"
                 d="M0,192L120,213.3C240,235,480,277,720,250.7C960,224,1200,128,1320,80L1440,32L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"
               />
             </Svg>
@@ -77,47 +70,50 @@ getData();
             </View>
           </View>
         </View>
-        <View className="mx-4 space-y-7">
+        <View className="mx-6 space-y-7">
           {/* Features Grid */}
-          <View className="bg-white p-4 rounded-lg shadow mt-6 flex-row flex-wrap justify-center items-center space-x-10">
-            <Link className="mb-8" href={"../jadwal_kuliah"}>
-            <View className="flex-col items-center w-1/3" >
-              <Icon name="clock-o" size={35} color="#000" />
-              <Text className="mt-2">Jadwal Kuliah</Text>
-            </View>
+          <View
+            className="bg-white px-4 py-8 rounded-lg shadow mt-6 flex-row flex-wrap justify-center items-center"
+            style={{ columnGap: 32, rowGap: 32 }}
+          >
+            <Link href={"../jadwal_kuliah"}>
+              <View className="flex-col items-center w-1/3">
+                <Icon name="clock-o" size={35} color="#000" />
+                <Text className="mt-2">Jadwal Kuliah</Text>
+              </View>
             </Link>
-            <Link className="mb-8" href={"../kalender_akademik"}>
-            <View className="flex-col items-center w-1/3">
-              <Icon name="calendar" size={35} color="#000" />
-              <Text className="mt-2">Kaldik</Text>
-            </View>
+            <Link href={"../kalender_akademik"}>
+              <View className="flex-col items-center w-1/3">
+                <Icon name="calendar" size={35} color="#000" />
+                <Text className="mt-2">Kaldik</Text>
+              </View>
             </Link>
-            <Link className="mb-8" href={"../jadwal_kuliah"}>
-            <View className="flex-col items-center w-1/3">
-              <Icon name="wifi" size={35} color="#000" />
-              <Text className="mt-2">Hotspot</Text>
-            </View>
+            <Link href={"../jadwal_kuliah"}>
+              <View className="flex-col items-center w-1/3">
+                <Icon name="wifi" size={35} color="#000" />
+                <Text className="mt-2">Akses Hotspot</Text>
+              </View>
             </Link>
-            <Link className="mb-8" href={"../jadwal_kuliah"}>
-            <View className="flex-col items-center w-1/3">
-              <Icon name="id-card" size={35} color="#000" />
-              <Text className="mt-2">Pindai Kartu</Text>
-            </View>
+            <Link href={"../jadwal_kuliah"}>
+              <View className="flex-col items-center w-1/3">
+                <Icon name="id-card" size={35} color="#000" />
+                <Text className="mt-2">Pemindai Kartu</Text>
+              </View>
             </Link>
-            <Link className="mb-8" href={"../jadwal_kuliah"}>
-            <View className="flex-col items-center w-1/3">
-              <View className="h-[35] w-[35] bg-black"></View>
-              <Text
-                onPress={() => {
-                  console.log("Lapor MBKM");
-                }}
-                className="mt-2"
-              >
-                MBKM
-              </Text>
-            </View>
-            {/* <ActivityIndicator size={'large'} color={'yellow'} animating={false}></ActivityIndicator> */}
-                </Link>
+            <Link href={"../jadwal_kuliah"}>
+              <View className="flex-col items-center w-1/3">
+                <View className="h-[35] w-[35] bg-black"></View>
+                <Text
+                  onPress={() => {
+                    console.log("Lapor MBKM");
+                  }}
+                  className="mt-2"
+                >
+                  Lapor MBKM
+                </Text>
+              </View>
+              {/* <ActivityIndicator size={'large'} color={'yellow'} animating={false}></ActivityIndicator> */}
+            </Link>
           </View>
 
           {/* News Section */}
@@ -130,37 +126,41 @@ getData();
                 <Text className="text-blue-900">See more</Text>
               </TouchableOpacity>
             </View>
-            <View className="flex-row flex-wrap justify-between ">
-              <View className="bg-blue-900 w-[170] h-[110] mb-4"></View>
-              <View className="bg-blue-900 w-[170] h-[110] mb-4"></View>
-              <View className="bg-blue-900 w-[170] h-[110] mb-4"></View>
-              <View className="bg-blue-900 w-[170] h-[110] mb-4"></View>
-              <View className="bg-blue-900 w-[170] h-[110] mb-4"></View>
-              <View className="bg-blue-900 w-[170] h-[110] mb-4"></View>
+            <View
+              className="flex-row flex-wrap justify-between"
+              style={{ rowGap: 20 }}
+            >
+              {arrayImg.map((item: any, index: number) => (
+                <Image
+                  source={{ uri: item }}
+                  key={index}
+                  className="w-[47%] h-28"
+                />
+              ))}
             </View>
           </View>
         </View>
         {/* Footer */}
         {/* <View className="bg-white p-4 mt-4 flex-row justify-around">
-        <Link className="mb-8" href={"../jadwal_kuliah"}>
+        <Link href={"../jadwal_kuliah"}>
     //     <View className="items-center">
     //       <Icon name="home" size={30} color="#000" />
     //       <Text>Beranda</Text>
     //     </View>
     </Link>
-    <Link className="mb-8" href={"../jadwal_kuliah"}>
+    <Link href={"../jadwal_kuliah"}>
     //     <View className="items-center text-gray-400">
     //       <Icon name="headphones" size={30} color="gray" />
     //       <Text>Layanan</Text>
     //     </View>
     </Link>
-    <Link className="mb-8" href={"../jadwal_kuliah"}>
+    <Link href={"../jadwal_kuliah"}>
     //     <View className="items-center text-gray-400">
     //       <Icon name="bell" size={30} color="gray" />
     //       <Text>Notifikasi</Text>
     //     </View>
     </Link>
-    <Link className="mb-8" href={"../jadwal_kuliah"}>
+    <Link href={"../jadwal_kuliah"}>
     //     <View className="items-center text-gray-400">
     //       <Icon name="user" size={30} color="gray" />
     //       <Text>Profil</Text>

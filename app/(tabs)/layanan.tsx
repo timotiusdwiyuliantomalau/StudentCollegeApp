@@ -5,8 +5,11 @@ import Ion from "react-native-vector-icons/Ionicons";
 export default function TabTwoScreen() {
   return (
     <View className="flex flex-col h-full ">
-      <View className="h-[200]  bg-yellow-400 relative">
-        <View className={`flex-row items-center space-x-5 justify-center text-center px-4 absolute w-full top-2`} style={{paddingTop: StatusBar.currentHeight}}>
+      <View className="h-[200]  bg-yellow-300 relative">
+        <View
+          className={`flex-row items-center space-x-5 justify-center text-center px-4 absolute w-full top-2`}
+          style={{ paddingTop: StatusBar.currentHeight }}
+        >
           <Text className="text-2xl font-bold">Layanan</Text>
           <Fa6 name="file-circle-question" size={20} color="black" />
         </View>

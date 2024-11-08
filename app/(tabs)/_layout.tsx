@@ -42,9 +42,7 @@ export default function TabLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            tabBarIcon: ({ color}) => (
-              <TabBarIcon name="home" color={color} />
-            ),
+            tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           }}
         />
         <Tabs.Screen
@@ -53,10 +51,10 @@ export default function TabLayout() {
             title: "Notifikasi",
             headerRight: () => (
               <Link
-                className="mr-3 font-bold text-lg text-green-600"
+                className="mr-3 text-blue-700 font-medium text-lg"
                 href={{ pathname: "/" }}
               >
-                Info
+                Home
               </Link>
             ),
             headerShown: true,

@@ -16,11 +16,22 @@ export default function TabTwoScreen() {
   const [layananTiket, setLayananTiket] = React.useState<any>({});
   const [inputTiket, setInputTiket] = React.useState<any>("");
   const [inputSend, setInputSend] = React.useState("");
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const handleRefresh = () => {
+    setRefreshing(true);
+    getLayananTiket(
+      (result: any) => result.data && setLayananTiket(result.data[0])
+    );
+    setRefreshing(false);
+  };
+
   React.useEffect(() => {
     getLayananTiket(
       (result: any) => result.data && setLayananTiket(result.data[0])
     );
   }, []);
+
   return (
     <View className="flex flex-col h-full ">
       <View className="h-[200]  bg-yellow-300 relative">
@@ -44,7 +55,10 @@ export default function TabTwoScreen() {
             memiliki kendala atau masalah.
           </Text>
           <TouchableOpacity className="bg-blue-500 text-white px-4 py-2 rounded flex-row items-center space-x-2 w-1/2">
-            <Text onPress={() => setIsFormTiket(!isFormTiket)} className="text-white">
+            <Text
+              onPress={() => setIsFormTiket(!isFormTiket)}
+              className="text-white"
+            >
               Buat Tiket Baru
             </Text>
             <Fa6 name="plus-square" size={15} color="white" />
@@ -68,7 +82,7 @@ export default function TabTwoScreen() {
                   const tickets: any = layananTiket.ticket;
                   tickets.push(inputTiket);
                   addTiketLayanan(layananTiket.id, tickets);
-                  setLayananTiket({ id: layananTiket.id, ticket: tickets });
+                  // setLayananTiket({ id: layananTiket.id, ticket: tickets });
                 }}
                 name="send"
                 size={20}
@@ -91,6 +105,10 @@ export default function TabTwoScreen() {
                     <View style={{ height: 10 }}></View>
                   )}
                   data={layananTiket.ticket}
+                  refreshing={refreshing}
+                  onRefresh={() => {
+                    handleRefresh();
+                  }}
                   renderItem={({ item }) => (
                     <View style={{ backgroundColor: "white" }}>
                       <Text

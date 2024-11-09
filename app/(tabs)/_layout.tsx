@@ -5,6 +5,7 @@ import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import Drawer from "expo-router/drawer";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -25,8 +26,18 @@ export default function TabLayout() {
           tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
           tabBarInactiveTintColor: Colors.dark.tint,
           headerShown: false,
+          tabBarItemStyle: {
+            paddingVertical:5,
+          },
         }}
-      >
+      >        
+        <Tabs.Screen
+          name="index"
+          options={{
+            title: "Home",
+            tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          }}
+        />
         <Tabs.Screen
           name="layanan"
           options={{
@@ -37,12 +48,6 @@ export default function TabLayout() {
                 color={color}
               />
             ),
-          }}
-        />
-        <Tabs.Screen
-          name="index"
-          options={{
-            tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           }}
         />
         <Tabs.Screen

@@ -27,10 +27,10 @@ export default function TabLayout() {
           tabBarInactiveTintColor: Colors.dark.tint,
           headerShown: false,
           tabBarItemStyle: {
-            paddingVertical:5,
+            paddingVertical: 5,
           },
         }}
-      >        
+      >
         <Tabs.Screen
           name="index"
           options={{
@@ -70,7 +70,7 @@ export default function TabLayout() {
         />
         <Tabs.Screen
           name="profil"
-          initialParams={{ name: "Kosong" }}
+          initialParams={{ name: "Timotius Dwi Yulianto Malau" }}
           options={{
             title: "Profil",
             tabBarIcon: ({ color, focused }) => (

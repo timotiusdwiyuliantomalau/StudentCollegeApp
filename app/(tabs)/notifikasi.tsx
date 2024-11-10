@@ -1,12 +1,13 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "expo-router";
-import React from "react";
+import React, { useContext } from "react";
 import { Alert } from "react-native";
 import { TouchableHighlight, Text, View } from "react-native";
 import {
   GestureHandlerRootView,
   Swipeable,
 } from "react-native-gesture-handler";
+import { AuthContext } from "../auth_provider";
 
 const LeftSwipeActions = () => (
   <View className="flex-1 bg-green-500 justify-center items-center">
@@ -16,6 +17,7 @@ const LeftSwipeActions = () => (
 
 const App = () => {
   const navigation = useNavigation();
+  const { user, setUser } = useContext(AuthContext);
   React.useEffect(() => {
     navigation.setOptions({
       headerBackground: () => (
@@ -29,7 +31,7 @@ const App = () => {
         />
       ),
     });
-  }, [navigation]);
+  }, []);
   function handleSwipe() {
     Alert.alert("Halo");
   }
@@ -40,9 +42,7 @@ const App = () => {
         onSwipeableOpen={() => handleSwipe()}
         renderLeftActions={LeftSwipeActions}
       >
-        <TouchableHighlight
-          underlayColor="green"
-        >
+        <TouchableHighlight underlayColor="green">
           <Text className="h-32 bg-white">Press me!</Text>
         </TouchableHighlight>
       </Swipeable>

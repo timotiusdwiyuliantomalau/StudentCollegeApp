@@ -1,5 +1,5 @@
 import { Link } from "expo-router";
-import React from "react";
+import React, { useContext } from "react";
 import {
   Image,
   ScrollView,
@@ -10,8 +10,10 @@ import {
 } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { AuthContext } from "../auth_provider";
 
 function HomeScreen() {
+  const { user, setUser } = useContext(AuthContext);
   const logoUnnes = require("../../assets/images/logo_unnes.png");
   const [arrayImg, setArrayImg] = React.useState<any>([]);
   React.useEffect(() => {

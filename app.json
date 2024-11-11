@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "first-app",
+    "name": "unnes_app",
     "slug": "first-app",
     "version": "1.0.0",
     "orientation": "default",
@@ -9,8 +9,8 @@
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/logo_unnes.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "white",
+      "resizeMode": "contain"
     },
     "ios": {
       "supportsTablet": true

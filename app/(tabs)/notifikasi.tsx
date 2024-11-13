@@ -8,6 +8,7 @@ import {
   Swipeable,
 } from "react-native-gesture-handler";
 import { AuthContext } from "../auth_provider";
+import { TouchableNativeFeedback } from "react-native";
 
 const LeftSwipeActions = () => (
   <View className="flex-1 bg-green-500 justify-center items-center">
@@ -46,6 +47,13 @@ const App = () => {
           <Text className="h-32 bg-white">Press me!</Text>
         </TouchableHighlight>
       </Swipeable>
+      <TouchableNativeFeedback
+  onPress={() => {
+    alert('Tapped!');
+  }}
+>
+  <Text>Tap me</Text>
+</TouchableNativeFeedback>
     </GestureHandlerRootView>
   );
 };

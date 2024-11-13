@@ -106,9 +106,6 @@ function HomeScreen() {
               <View className="flex-col items-center w-1/3">
                 <View className="h-[35] w-[35] bg-black"></View>
                 <Text
-                  onPress={() => {
-                    console.log("Lapor MBKM");
-                  }}
                   className="mt-2"
                 >
                   Lapor MBKM

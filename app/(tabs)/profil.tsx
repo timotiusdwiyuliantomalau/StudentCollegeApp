@@ -1,5 +1,5 @@
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import React, { useContext } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -8,12 +8,11 @@ import {
   StatusBar,
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { AuthContext } from "../auth_provider";
+import { signOut } from "firebase/auth";
+import { auth } from "@/config/firebase/initialize";
 
 function profil() {
   const name = useLocalSearchParams().name;
-  const { user, setUser } = useContext(AuthContext);
   return (
     <>
       <ScrollView className="flex flex-col h-full">
@@ -75,8 +74,7 @@ function profil() {
                 <FontAwesome name="sign-out" size={24} color="red" />
                 <Text
                   onPress={async () => {
-                    setUser(null);
-                    AsyncStorage.removeItem("isLogin");
+                    signOut(auth);
                   }}
                   className="ml-4 text-red-600"
                 >

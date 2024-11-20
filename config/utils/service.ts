@@ -2,6 +2,7 @@ import {
   addDoc,
   collection,
   doc,
+  getDoc,
   getDocs,
   getFirestore,
   updateDoc,
@@ -76,5 +77,25 @@ export async function handleLogin(email: string, password: string) {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error: any) {
     Alert.alert(error.message.split(":")[1]);
+  }
+}
+export async function getCategories() {
+  try {
+    // let data = await fetch(
+    //   "https://www.themealdb.com/api/json/v1/1/search.php?s=Chicken"
+    // );
+    // const datas = await data.json();
+    const data = await getDoc(doc(firestore, "menus", "categories"));
+    return data.data();
+  } catch (err) {
+    console.error(err);
+  }
+}
+export async function getLists() {
+  try {
+    const res = await getDoc(doc(firestore, "menus", "list"));
+    return res.data();
+  } catch (err) {
+    console.error(err);
   }
 }

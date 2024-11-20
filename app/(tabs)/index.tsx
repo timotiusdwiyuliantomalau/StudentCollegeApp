@@ -96,7 +96,7 @@ function HomeScreen() {
                 <Text className="mt-2">Akses Hotspot</Text>
               </View>
             </Link>
-            <Link href={"../jadwal_kuliah"}>
+            <Link href={"../test"}>
               <View className="flex-col items-center w-1/3">
                 <Icon name="id-card" size={35} color="#000" />
                 <Text className="mt-2">Pemindai Kartu</Text>
@@ -122,7 +122,9 @@ function HomeScreen() {
                 News & Updates
               </Text>
               <TouchableOpacity>
+                <Link href={"../testPage"}>
                 <Text className="text-blue-900">See more</Text>
+                </Link>
               </TouchableOpacity>
             </View>
             <View
